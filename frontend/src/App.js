@@ -1,9 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import Header from "./components/layout/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Create from "./pages/Create";
+import ViewEmployee from "./pages/ViewEmployee";
 
 function App() {
   return (
-    <div>Shivani</div>
+    <>
+      <Header />
+        <Routes>
+          <Route exact path="/" element={<Home />}/>
+          <Route exact path="/create/employee" element={<Create />} />
+          {/* <Route exact path="/edit/:id" component={Edit} /> */}
+      <Route exact path="/view/employee/:id" element={<ViewEmployee />} />
+        </Routes>
+    </>
   );
 }
 
