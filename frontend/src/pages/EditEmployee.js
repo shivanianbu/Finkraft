@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Form from "../components/form";
 import { getApiResponse } from "../env";
 import Spinner from "../components/spinner";
+import { updatedata } from '../components/context/ContextProvider'
 
 const EditEmployee = () => {
   const navigate = useNavigate("");
   const { id } = useParams("");
 
   const [showForm, setShowForm] = useState(false);
+  const {updata, setUPdata} = useContext(updatedata)
+
   const [inpval, setINP] = useState({
     name: "",
     email: "",
@@ -68,6 +71,7 @@ const EditEmployee = () => {
       alert("Something Went wrong - Try again later");
     } else {
       navigate("/");
+      setUPdata(data2);
     }
   };
 

@@ -14,7 +14,7 @@ const ViewEmployee = () => {
   const [getuserdata, setUserdata] = useState([]);
 
   const { id } = useParams("");
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const getEmployee = async () => {
     const res = await fetch(`${getApiResponse()}/getemployee/${id}`, {
@@ -25,7 +25,6 @@ const ViewEmployee = () => {
     });
 
     const data = await res.json();
-
     if (res.status === 400 || !data) {
       console.log("error ");
     } else {
@@ -49,7 +48,7 @@ const ViewEmployee = () => {
 
     if (res2.status === 400 || !deletedata) {
     } else {
-      history.push("/");
+      navigate("/");
     }
   };
 
@@ -59,15 +58,14 @@ const ViewEmployee = () => {
       <Card sx={{ maxWidth: 600 }}>
         <CardContent>
           <div className="add_btn">
-            <NavLink to={`/edit/employee/${getuserdata.id}`}>
-              {" "}
+            <NavLink to={`/edit/employee/${getuserdata._id}`}>
               <button className="btn btn-primary mx-2">
                 <CreateIcon />
               </button>
             </NavLink>
             <button
               className="btn btn-danger"
-              onClick={() => deleteEmployee(getuserdata.id)}
+              onClick={() => deleteEmployee(getuserdata._id)}
             >
               <DeleteOutlineIcon />
             </button>

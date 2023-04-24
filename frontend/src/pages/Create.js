@@ -1,11 +1,12 @@
-import React from "react";
+import React,{ useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { getApiResponse } from "../env";
 import Form from "../components/form";
+import { adddata } from '../components/context/ContextProvider';
 
 const Create = () => {
   const navigate = useNavigate();
-
+  const { udata, setUdata } = useContext(adddata);
   const handleFormSubmit = async (e, inputVal) => {
     e.preventDefault();
 
@@ -31,10 +32,12 @@ const Create = () => {
     if (res.status === 400 || !data) {
       alert("Error - " + data);
     } else {
+      setUdata(data)
       navigate("/");
+    
     }
   };
 
-  return <Form onSubmit={handleFormSubmit} />;
+  return <Form onSubmit={handleFormSubmit} />
 };
 export default Create;

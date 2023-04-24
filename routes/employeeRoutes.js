@@ -75,7 +75,7 @@ router.delete("/deleteemployee/:id", async (req, res) => {
   try {
     const { id } = req.params;
 
-    const deleteEmployee = await users.findByIdAndDelete({ _id: id });
+    const deleteEmployee = await employees.findByIdAndDelete({ _id: id });
     res.status(201).json(deleteEmployee);
   } catch (error) {
     res.status(400).json(error);
@@ -87,7 +87,7 @@ router.delete("/deleteemployee/:id", async (req, res) => {
 router.get("/searchemployee/:key", async (req, res) => {
   try {
     const { key } = req.params;
-    const userindividual = await users.find({
+    const searchEmp = await employees.find({
       $or: [
         { name: { $regex: key } },
         { email: { $regex: key } },
@@ -96,7 +96,7 @@ router.get("/searchemployee/:key", async (req, res) => {
         { add: { $regex: key } },
       ],
     });
-    res.status(201).json(userindividual);
+    res.status(201).json(searchEmp);
   } catch (error) {
     res.status(400).json(error);
   }

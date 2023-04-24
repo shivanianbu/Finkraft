@@ -32,7 +32,6 @@ const Form = ({ editValue, onSubmit }) => {
       <nav aria-label="breadcrumb" className="mt-2">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            {" "}
             <NavLink className="breacrumb" to="/">
               Home
             </NavLink>
