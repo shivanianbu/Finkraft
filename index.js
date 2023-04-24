@@ -1,11 +1,9 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
-// require("./db/conn");
-// const users = require("./models/userSchema");
+require("./db/connection");
 const cors = require("cors");
-// const router = require("./routes/router");
+const router = require("./routes/employeeRoutes");
 
 const port = process.env.PORT || 8003;
 
@@ -16,7 +14,7 @@ app.get("/",(req,res)=>{
     res.json("server start")
 })
 
-// app.use(router);
+app.use(router);
 
 app.listen(port, () => {
     console.log(`server is start port number ${port}`);
