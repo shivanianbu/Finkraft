@@ -12,6 +12,7 @@ import {
   deldata,
   updatedata,
 } from "../components/context/ContextProvider";
+import Table from "../components/table";
 
 const Home = () => {
   const [getAlldata, setAlldata] = useState([]);
@@ -153,57 +154,13 @@ const Home = () => {
         </div>
         {isLoading ? (
           <Spinner />
-        ) : getAlldata.length ? (
-          <table className="table table-bordered">
-            <thead>
-              <tr className="table-light">
-                <th scope="col">S.No</th>
-                <th scope="col">User ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Position</th>
-                <th scope="col">Mobile</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {getAlldata
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((employee, index) => {
-                  return (
-                    <tr key={index}>
-                      <th scope="row">{index + 1}</th>
-                      <td>{employee.userId}</td>
-                      <td>{employee.name}</td>
-                      <td>{employee.email}</td>
-                      <td>{employee.work}</td>
-                      <td>{employee.mobile}</td>
-                      <td className="d-flex">
-                        <NavLink to={`/view/employee/${employee._id}`}>
-                          <IconButton color="primary">
-                            <RemoveRedEyeIcon />
-                          </IconButton>
-                        </NavLink>
-                        <NavLink to={`/edit/employee/${employee._id}`}>
-                          <IconButton color="primary">
-                            <CreateIcon />
-                          </IconButton>
-                        </NavLink>
-
-                        <IconButton
-                          color="error"
-                          onClick={() => deleteEmployee(employee._id)}
-                        >
-                          <DeleteOutlineIcon />
-                        </IconButton>
-                      </td>
-                    </tr>
-                  );
-                })}
-            </tbody>
-          </table>
         ) : (
-          <>No data Found</>
+          <Table
+            getAlldata={getAlldata}
+            page={page}
+            rowsPerPage={rowsPerPage}
+            deleteEmployee={deleteEmployee}
+          />
         )}
         {getAlldata.length > 10 && (
           <TablePagination
