@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { IconButton } from "@mui/material";
 import CreateIcon from "@mui/icons-material/Create";
@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import { sortByStringAsc, sortByStringDesc } from "../utils";
 
 const Table = ({ getAlldata, page, rowsPerPage, deleteEmployee }) => {
+
   const [sortName, setSortName] = useState();
   const [sortEmail, setSortEmail] = useState();
   const [sortPosition, setSortPosition] = useState();
@@ -23,6 +24,10 @@ const Table = ({ getAlldata, page, rowsPerPage, deleteEmployee }) => {
         setAlldata(sortedData)
     }
   }
+
+  useEffect(() => {
+    setAlldata(getAlldata)
+  },[getAlldata])
 
   return (
     <>

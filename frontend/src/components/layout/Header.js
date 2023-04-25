@@ -13,8 +13,7 @@ export default function Header() {
               width="30"
               height="24"
               className="d-inline-block align-text-top"
-            />
-            E-Data
+            /> E-Data
           </NavLink>
           <button
             className="navbar-toggler"

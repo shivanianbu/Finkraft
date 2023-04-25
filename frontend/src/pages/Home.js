@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../App.css";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import { IconButton, TablePagination } from "@mui/material";
-import CreateIcon from "@mui/icons-material/Create";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { NavLink } from "react-router-dom";
+import { TablePagination } from "@mui/material";
 import { getApiResponse } from "../env";
 import Spinner from "../components/spinner";
 import {

@@ -24,7 +24,6 @@ const sortByStringDesc = (filterData, columnName) => {
 };
 
 const getDescData = (a,b) => {
-  console.log("descd",a,b)
   if (a.toLowerCase() > b.toLowerCase()) {
     return -1;
   }
@@ -35,7 +34,6 @@ const getDescData = (a,b) => {
 };
 
 const getAscData = (a,b) => {
-  console.log("asc",a,b)
   if (a.toLowerCase() < b.toLowerCase()) {
     return -1;
   }
